@@ -79,8 +79,8 @@
   <img src="eye-close.png" id="eyeicon" style="font-size: 14px; position: relative; top: -35px; left: 100px;">
   <br>
   <label for="password">Comfirm Password</label><br>
-  <input type="password" name="password" placeholder="Comfirm-Password" id="password" class="form-control" required />
-  <img src="eye-close.png" id="eyeicon" style="font-size: 5px; position: relative; top: -35px; left: 100px;">
+  <input type="password" name="password" placeholder="Comfirm-Password" id="passwordd" class="form-control" required />
+  <img src="eye-close.png" id="eyeiconn" style="font-size: 5px; position: relative; top: -35px; left: 100px;">
   <br>
   
     <br> 
@@ -118,6 +118,21 @@ eyeicon.onclick = function(){
 }
 }
   </script>
+
+<script>
+  let eyeiconn = document.getElementById("eyeiconn");
+let passwordd = document.getElementById("passwordd");
+
+eyeiconn.onclick = function(){
+if(password.type  == "passwordd"){
+password.type = "text";
+eyeiconn.src = "eye-open.png";
+}else{
+password.type = "password";
+eyeicon.src = "eye-close.png";
+}
+}
+</script>
 <fieldset style="background-color: rgb(42, 41, 41); margin-top: 100px;">
   <div class="container">
     <div class="row">
