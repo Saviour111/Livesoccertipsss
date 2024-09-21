@@ -45,7 +45,7 @@ module.exports = {
     homePage,
     Sign,
     Payment,
-    pay,
+    Pay,
     Game,
     Login,
     About,
