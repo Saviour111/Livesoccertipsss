@@ -16,6 +16,9 @@ const Game = async (req,res) => {
 const Payment = async (req,res) => {
     res.render('payment')
 }
+const Pay = async (req,res) => {
+    res.render('Pay')
+}
 const Sign = async (req,res) => {
     res.render('sign')
 }
@@ -42,6 +45,7 @@ module.exports = {
     homePage,
     Sign,
     Payment,
+    pay,
     Game,
     Login,
     About,
