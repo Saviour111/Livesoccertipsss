@@ -40,7 +40,7 @@ const signup = async (req, res) => {
         // Send token as a cookie
         res.status(200)
             .cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
-            .render('payment');
+            .render('pay');
 
     }catch (err) {
         console.error('Error during signup:', err);
