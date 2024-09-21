@@ -3,7 +3,7 @@ const express = require("express")
     homePage,
     Sign,
     Payment,
-    pay,
+    Pay,
     Game,
     Login,
     About,
