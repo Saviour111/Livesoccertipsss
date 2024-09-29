@@ -49,6 +49,7 @@ const signup = async (req, res) => {
         }
 
 };
+}
 
 // Login function
 const login = async (req, res) => {
