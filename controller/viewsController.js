@@ -17,19 +17,17 @@ const Payment = async (req,res) => {
     res.render('payment')
 }
 const Pay = async (req,res) => {
-    res.render('pay')
+      res.render('Pay')
 }
 const Signup = async (req,res) => {
     res.render('signup')
 }
-
 const ForgetPassword = async(req,res) => {
     res.render('forgetpassword')
 }
 const  ResetPassword = async(req, res) =>{
     res.render('resetpassword')
 }
-
 const error = async (req,res) =>{
     res.render('error')
 }
