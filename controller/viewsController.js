@@ -17,10 +17,17 @@ const Payment = async (req,res) => {
     res.render('payment')
 }
 const Pay = async (req,res) => {
+<<<<<<< HEAD
+    res.render('Pay')
+}
+const Sign = async (req,res) => {
+    res.render('sign')
+=======
     res.render('pay')
 }
 const Signup = async (req,res) => {
     res.render('signup')
+>>>>>>> 704d515fe72c7cd333c0384d72e0b4a112b9ab0f
 }
 
 const ForgetPassword = async(req,res) => {

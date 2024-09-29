@@ -40,15 +40,14 @@ const signup = async (req, res) => {
         // Send token as a cookie and a success message
         res.status(200)
             .cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
-            .render('pay');
-            // .render('payment');
-            //  .send({ message: 'Signup successful, please proceed to payment' });
+            .render('payment');
+
 
     } catch (err) {
         if (err.code === 11000) {
             return res.status(400).send({ message: "Email is already in use" });
         }
-    }
+
 };
 
 // Login function
