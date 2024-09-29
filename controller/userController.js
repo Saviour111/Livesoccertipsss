@@ -42,10 +42,12 @@ const signup = async (req, res) => {
             .cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
             .render('payment');
 
-    }catch (err) {
-        console.error('Error during signup:', err);
-        res.status(500).send({ message: "Internal server error", error: err.message });
-    }
+
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.status(400).send({ message: "Email is already in use" });
+        }
+
 };
 
 // Login function
