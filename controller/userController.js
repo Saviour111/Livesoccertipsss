@@ -40,13 +40,15 @@ const signup = async (req, res) => {
         // Send token as a cookie and a success message
         res.status(200)
             .cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
-            .render('payment');
+
+            .render('pay');
 
     }catch (err) {
-        console.error('Error during signup:', err);
-        res.status(500).send({ message: "Internal server error", error: err.message });
+        if (err.code === 11000) {
+       return res.status(400).send({ message: "Email is already in use"});
     }
 };
+}
 
 // Login function
 const login = async (req, res) => {
