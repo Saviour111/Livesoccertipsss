@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use(cors({
-    origin: 'https://livesocccertipsss-qnq2.onrender.com', // Allow your frontend URL
+    origin: 'https://livesocccertipsss.onrender.com', // Allow your frontend URL
     credentials: true // If you are sending cookies (e.g., JWT)
 }));
 
