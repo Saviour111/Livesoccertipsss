@@ -47,11 +47,8 @@ const signup = async (req, res) => {
         if (err.code === 11000) {
             return res.status(400).send({ message: "Email is already in use" });
         }
-
-        console.error('Error during signup', err);
-        
-   }
-};
+   };
+}
 
 // Login function
 const login = async (req, res) => {
