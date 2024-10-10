@@ -51,7 +51,7 @@ const signup = async (req, res) => {
         console.error('Error during signup', err);
         res.status(500).send({message: "internal server error", error: err.message});
    }
-};
+};  
 
 // Login function
 const login = async (req, res) => {
