@@ -47,11 +47,11 @@ const signup = async (req, res) => {
         if (err.code === 11000) {
             return res.status(400).send({ message: "Email is already in use" });
         }
-        console.error('Error during signup', err);
-        res.status(500).send({message: "internal server error", error: err.message})
 
+        console.error('Error during signup', err);
+        res.status(500).send({message: "internal server error", error: err.message});
+   }
 };
-}
 
 // Login function
 const login = async (req, res) => {
