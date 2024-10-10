@@ -48,8 +48,10 @@ const signup = async (req, res) => {
             return res.status(400).send({ message: "Email is already in use" });
         }
 
+        console.error('Error during signup', err);
+        
    }
-};  
+};
 
 // Login function
 const login = async (req, res) => {
