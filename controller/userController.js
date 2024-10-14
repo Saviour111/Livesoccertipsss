@@ -15,6 +15,11 @@ const signup = async (req, res) => {
     try {
         const { firstName, lastName, email, password, confirm_password } = req.body;
 
+        if (!firstName || !lastName || !email || !password || !confirm_password) {
+            console.log('Missing required fields');
+            return res.status(400).send({ message: "All fields are required" });
+        }
+
         // Check if passwords match
         if (password !== confirm_password) {
             return res.status(400).send({ message: "Passwords do not match" });
@@ -23,11 +28,15 @@ const signup = async (req, res) => {
         // Check if user already exists
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
-            return res.status(400).send({ message: "User already exists" });
+            return res.status(400)
+            .render('exist')
+            // .send({ message: "User already exists" });
         }
 
         // Hash the password before saving to DB
-        const salt = await bcrypt.genSalt(10);
+       
+        const saltRounds = 10; // Consider reducing to 8 if necessary
+        const salt = await bcrypt.genSalt(saltRounds);
         const hashedPassword = await bcrypt.hash(password, salt);
 
         // Create new user and save to DB
@@ -39,15 +48,14 @@ const signup = async (req, res) => {
 
         // Send token as a cookie and a success message
         res.status(200)
-            .cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
-            .render('Pay');
-
-
+            .cookie('jwt', token, { maxAge: 3600000, httpOnly: true }) 
+            .render('pay');
     } catch (err) {
         if (err.code === 11000) {
             return res.status(400).send({ message: "Email is already in use" });
         }
-   };
+        res.status(500).send({ message: 'Internal server error', error: err.message });
+    }
 }
 
 // Login function
@@ -143,6 +151,11 @@ const resetPasswordWithOtp = async (req, res) => {
         // console.log(req.body);
         const { email, otp, password, confirm_password } = req.body;
 
+        if (!email || !otp || !password || !confirm_password) {
+            console.log('Missing required fields');
+            return res.status(400).send({ message: "All fields are required" });
+        }
+
         // Check if passwords match
         if (password !== confirm_password) {
             return res.status(400).send({ message: 'Passwords do not match' });
@@ -160,7 +173,8 @@ const resetPasswordWithOtp = async (req, res) => {
         }
 
         // Hash the new password
-        const salt = await bcrypt.genSalt(10);
+        const saltRounds = 10; // You can adjust this value based on performance needs
+        const salt = await bcrypt.genSalt(saltRounds);
         const hashedPassword = await bcrypt.hash(password, salt);
 
         // Update user's password and clear OTP fields
@@ -169,9 +183,8 @@ const resetPasswordWithOtp = async (req, res) => {
         user.resetPasswordOtpExpires = undefined;
 
         await user.save();
-
-            res.status(200).render('login')
-        //  res.status(200).send({ message: 'Password reset successful, you can now log in with your new password' });
+        // res.status(200).render('success')
+          res.status(200).send({ message: 'Password reset successful, you can now log in with your new password' });
     } catch (err) {
         console.log('Error in resetting password with OTP:', err);
         res.status(500).send({ message: 'Internal server error', error: err.message });
