@@ -49,7 +49,7 @@ const signup = async (req, res) => {
         // Send token as a cookie and a success message
         res.status(200)
             .cookie('jwt', token, { maxAge: 3600000, httpOnly: true }) 
-            .render('pay');
+            .render('Pay');
     } catch (err) {
         if (err.code === 11000) {
             return res.status(400).send({ message: "Email is already in use" });
