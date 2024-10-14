@@ -16,8 +16,8 @@ const Game = async (req,res) => {
 const Payment = async (req,res) => {
     res.render('payment')
 }
-const Pay = async (req,res) => {
-      res.render('Pay')
+const pay = async (req,res) => {
+      res.render('pay')
 }
 const Signup = async (req,res) => {
     res.render('signup')

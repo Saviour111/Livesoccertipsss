@@ -3,7 +3,7 @@ const express = require("express")
     homePage,
     Signup,
     Payment,
-    Pay,
+    pay,
     Game,
     Login,
     About,
@@ -20,7 +20,7 @@ const viewRouter = express.Router()
 viewRouter.get("/", homePage)
 viewRouter.get("/signup", Signup)
 viewRouter.get("/payment", Payment)
-viewRouter.get("/Pay", Pay)
+viewRouter.get("/pay", pay)
 viewRouter.get("/games", Game) 
 viewRouter.get("/login", Login)
 viewRouter.get("/about", About) 
